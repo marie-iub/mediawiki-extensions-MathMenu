@@ -18,20 +18,20 @@
       tex = encodeURIComponent(tex);//.replace(/\(/g, "%28").replace(/\\\\/g,"\\").replace(/\)/g,"%29").replace(/\*/g,"%@A").replace(/\\/g,"%5C");        
 
       var req = new XMLHttpRequest();
-      req.open('GET', '/index.php?title='+tex, false);
+      req.open('GET', wgScriptPath+'/index.php?title='+tex, false);
       req.send(null);
       $page_exists = (req.status == 200);
 
       if (! $page_exists) {
         return[
           ["New formula page", function(element){
-            window.location.href = "/index.php?title=" + tex+"&action=edit&boilerplate=Template%3ADRMF";
+            window.location.href = wgScriptPath + "/index.php?title=" + tex+"&action=edit&boilerplate=Template%3ADRMF";
           }]];
       }
       else {
         return[
           ["Formula page", function(element){
-            window.location.href = "/index.php?title=" + tex;
+            window.location.href = wgScriptPath + "/index.php?title=" + tex;
           }]]; 
       }
     }
